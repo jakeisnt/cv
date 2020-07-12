@@ -1,0 +1,48 @@
+#+TITLE: Old
+
+** GSoC Mentor for [[https://summerofcode.withgoogle.com/projects/#4973810873270272][Zulip]]
+*** May - Aug, 2018
+Mentored a student who built a terminal client for Zulip using it's API.
+*** May - Aug, 2019
+Mentored a couple of students, one who worked on the terminal client the
+previous year as well, and another who worked on message archival and
+solidifying the email gateway for Zulip.
+** Machine Learning Engineer at [[http://infilect.com][Infilect]]
+*** Jul 2015 - Mar 2016
+Worked on a fashion assistant leveraging deep neural networks for image based
+search and retrieval
+- Learnt about CNNs and became comfortable training models using Torch and
+  Caffe
+- Built a visual similarity based search system
+- Improved the data collection platform for the product database
+** Recurser at the [[https://recurse.com][Recurse Center]]
+*** Jun - Aug, 2014
+Spent 12-weeks in a collaborative, self-directed, programming retreat. Here's a
+ [[https://punchagan.muse-amuse.in/recurse-center/][daily journal]] of what I did there.
+- Learnt about the internals of Python and built an inspection tool for CPython
+  code
+- Worked with hardware and helped build a LED spectrum analyzer among other
+  things
+
+I contribute to a number of FOSS projects in varying degrees. [[https://github.com/punchagan][GitHub]] provides a
+fairly comprehensive overview.
+** [[https://github.com/punchagan/cinspect][cinspect]]
+*** Python
+~cinspect~ attempts to extend Python's built-in inspect module to add
+"inspection" for Python's builtins and other objects not written in Python.  It
+uses ~libclang~ to parse C-code and indexes it to allow looking up the source
+of the required objects, using an ~inspect~-like API.
+** [[https://github.com/recursecenter/blaggregator][Blaggregator]]
+*** Python, Django, Javascript, CSS
+A Django powered site that aggregates blog posts of Recursers from all over the
+web. I've added a bunch of features to it, and am the current maintainer.
+** [[https://github.com/org2blog/org2blog][org2blog]]
+*** Emacs-Lisp
+An ~Emacs~ minor mode for blogging to Wordpress that's loved by many users for it's ease of use.
+** [[https://github.com/punchagan/crumb][crumb]]
+*** Javascript, CSS
+An experimental Disqus-like commenting system that (ab)uses GitHub issues as the "database".
+* Education
+** BITS Pilani, Goa Campus, India
+*** Aug 2005 - Jun 2009
+/B.E.(Hons.), Electrical and Electronics/, GPA: 8.31/10
