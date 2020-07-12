@@ -24,3 +24,4 @@ tmp/
 *.mtc1
 *.out
 *.synctex.gz
+.auctex-auto/*
