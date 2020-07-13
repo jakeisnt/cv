@@ -1,0 +1,6 @@
+#+title: Resume
+This is my current resume.
+
+It's currently heavily inspired by [[https://github.com/deedy/Deedy-Resume][this resume template]], as retrieved from [[https://www.latextemplates.com/template/deedy-resume-cv][this LaTeX templates website]].
+
+I plan on eventually converting it to a template for an org-mode file so that I can change the document without touching any of the style.
