@@ -1,2 +1,19 @@
 #+TITLE: Todo
 * TODO framework for org mode -> resume template
+is org mode the best file format?
+it might be better to even store the data in a nix object...
+
+[[https://gitlab.com/dimitrieh/curriculumvitae-ci-boilerplate][cv ci boilerplate for building a resume]]
+[[https://github.com/ysndr/cv/blob/master/cv.yaml][someone making good use of said boilerplate]]
+
+[[https://news.ycombinator.com/item?id=10452606][some skeptics on hn ranting about resumes]]
+[[https://practicaltypography.com/resumes.html][practical typography resume tips]]
+[[https://www.reddit.com/r/NixOS/comments/j4k2zz/does_anyone_use_flakes_to_manage_their_entire/][etc nixos stuff]]
+
+[[https://blog.ysndr.de/posts/internals/2021-01-01-flake-ification/][great article on flakes]]
+* Steps
+- Decide on config format
+  + must be compatible with this tool and with others
+  + i'd like to easily generate html representation of my resume too
+- Create flake to compile to LaTeX
+- Store output format somewhere
