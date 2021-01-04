@@ -1,0 +1,48 @@
+#+TITLE: Resume Stuff
+* Northeastern University Khoury COllege of Computer Sciences
+CS2500A and 2510A Tutor
+
+2019 - 2020
+
+Responsibilities - Served as a TA for three semesters, teaching the accelerated section of the introductory computer science track at Northeastern, focused on functional programming and data structures
+- Used ISL (A subset of the Racket Lisp language) and Java
+- Graded assignments and exams, providing students with pointed feedback for improving program design and methodology
+- Held regular office hours to answer student questions and help them work through course material
+
+* Portland State University
+Student Intern
+
+2017 - 2017
+
+Responsibilities - Developed a parallelized Python and Cython program to efficiently calculate successive Fibonacci numbers using state of the art algorithms
+- Developed a C++ library to manipulate graphs stored in compressed sparse row matrix format, performing matrix operations to generate visualizations of large datasets
+- Actively collaborated with professors and other students 
+* CDK Global
+Software Development Intern
+
+2018 - 2018
+
+Responsibilities - Planned and developed a full-stack web application with React and SpringBoot to substantially benefit sales
+- Worked directly with end users, product managers and team members to design and plan the service to best meet end users' needs
+- Taught other full time team members React, Redux and the application's architecture choices to empower them to maintain the application going forward
+* Intel Inc.
+Software Engineering Intern
+
+2020 - 2020
+
+Responsibilities - Worked in Intel's IOTG group on machine learning and embedded systems development
+- Developed a multimodal data distribution service for a platform integral to Intel's machine learning efforts
+- Used Python, docker, docker-compose, protocol buffers, ZeroMQ and internal graph databases to queue and delegate image and video data
+- Interoperated with internal code written in Go, C and C++
+* Skira AB
+Software Development Intern
+
+2020 - 2020
+Most Recent
+
+Responsibilities - Regularly communicate with product, sales and marketing teams, incl. C-level positions, to assess product needs
+- Discovered and developed significant features for Skira's SaaS product, including thorough metrics tracking for the platform and a complete refactor of the front-end of the platform
+- Introduced multiple new full-stack features and endpoints
+- Full-stack javascript development with React, Redux, GraphQL, Express, PostgreSQL, Google Cloud Platform and Kubernetes
+- Regularly collaborated with other team members, software and otherwise,in a fast-paced environment
+- Took on workload and responsibility equal to the team's full-time members
