@@ -1,8 +1,8 @@
 {
   "basics": {
     "name": "John Doe",
-    // "label": "Programmer",
-    // "picture": "",
+    "label": "Programmer",
+    "picture": "",
     "email": "john@gmail.com",
     "phone": "(912) 555-4321",
     "website": "http://johndoe.com",

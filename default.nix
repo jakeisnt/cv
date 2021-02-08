@@ -11,6 +11,7 @@ let
       haskell-language-server
       time
       brittany
+      turtle
     ];
   ghc = pkgs.haskellPackages.ghcWithPackages haskellDeps;
   nixPackages = [ ghc pkgs.gdb pkgs.haskellPackages.cabal-install ];
