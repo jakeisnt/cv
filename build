@@ -1,3 +1,5 @@
 #!/usr/bin/env sh
 
 xelatex ./cv.tex
+# Resumes are better when they have names!
+mv ./cv.pdf JacobChvatalResume.pdf

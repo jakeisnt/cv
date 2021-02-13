@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-rm ./cv.aux ./cv.log ./cv.out ./cv.pdf
+rm ./cv.aux ./cv.log ./cv.out ./JacobChvatalResume.pdf
