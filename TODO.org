@@ -1,2 +1,0 @@
-#+TITLE: Todo
-* TODO framework for org mode -> resume template

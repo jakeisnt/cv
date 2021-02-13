@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+rm ./cv.aux ./cv.log ./cv.out
+
+if [[ $1 == "all" ]]; then
+    rm ./JacobChvatalResume.pdf
+fi
