@@ -23,6 +23,5 @@ tmp/
 *.mtc
 *.mtc1
 *.out
-*.pdf
 *.synctex.gz
 .auctex-auto/*
