@@ -2,3 +2,8 @@
 This is my current resume.
 
 It's currently heavily inspired by [[https://github.com/deedy/Deedy-Resume][this resume template]], as retrieved from [[https://www.latextemplates.com/template/deedy-resume-cv][this LaTeX templates website]].
+
+** Prior Art
+- [[https://github.com/poldrack/autoCV][AutoCV]]
+- [[https://jsonresume.org/][JSON Resume]]
+- [[https://www.xml.com/pub/a/2003/05/28/qa.html][XML powered job hunting]] and the [[http://xmlresume.sourceforge.net/][XML resume library]]
