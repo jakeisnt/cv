@@ -25,5 +25,5 @@ tmp/
 *.out
 *.synctex.gz
 .auctex-auto/*
-.direnv/*
+.direnv/
 !.direnv/.git-keep

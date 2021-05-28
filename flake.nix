@@ -14,7 +14,7 @@
         lib = nixpkgs.lib;
       in { 
         devShell = pkgs.mkShell {
-          buildInputs = with pkgs; [ texlive.combined.scheme-full ];
+          buildInputs = with pkgs; [ texlive.combined.scheme-full racket ];
         };
     });
 }
