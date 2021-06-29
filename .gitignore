@@ -26,5 +26,5 @@ tmp/
 *.synctex.gz
 .auctex-auto/*
 .direnv/*
-compiled/*
+pollen/compiled
 !.direnv/.git-keep
