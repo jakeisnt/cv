@@ -1,16 +1,5 @@
 #lang pollen
 
-There are three layers here
-- A format to encode a CV
-- A maintainable formatting language that encodes the formatting of the CV
-- The translation of this formatting language to viewable documents
-
-1. Pattern match and mimic one resume
-2. Abstract to ensure the formatting works for a second resume - the resume formatting language must be expressive enough to express most resumes without diving into the gory details
-3. Abstract out the resume contents and make it target the formatting language
-
-The code for the link should automatically parse the name of the service and the username from the link provided
-
 ◊head{
   ◊heading{Jacob Chvatal}
   ◊title{Computational Designer}
