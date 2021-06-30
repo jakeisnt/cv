@@ -131,18 +131,14 @@
 ;; the body of an experience
 ;; typically contains things accomplished during the experience
 (define (expbody . elements)
-  (println elements)
-
-  (define nelem (if (and
-                     (and (list? elements) (not (empty? elements)))
-                     (and (list? (first elements)) (not (empty? (first elements)))))
-                    (first elements) elements))
   (case (current-poly-target)
     [(html) (txexpr 'div '((id "expbody")) elements)]
     [(txt) elements]
-    [(ltx pdf) (apply string-append
+    [(ltx pdf)
+     (define nelem (expand-first elements))
+     (apply string-append
                       `("\n\\begin{cvitems}\n"
-                        ,@nelem
+                        ,nelem
                         "\n\\end{cvitems}"))]))
 
 ;; bullet point in the body of an experience
@@ -150,7 +146,9 @@
   (case (current-poly-target)
     [(html) (txexpr 'div '((id "expbullet")) elements)]
     [(txt) `("- " ,@elements "")]
-    [(ltx pdf) (apply string-append `("\\item{ " ,@elements "}\n"))]))
+    [(ltx pdf)
+     (define elem (expand-first elements))
+     (apply string-append `("\\item{ " ,elem "}\n"))]))
 
 ;; a list of experiences, skills or otherwise
 ;; these are distinct from bullets. bullets are full length parts of a description,
@@ -194,3 +192,7 @@
 ;; produce the list with all but its last element
 (define (all-but-last ls)
   (reverse (cdr (reverse ls))))
+
+;; expand the first item of the list until we hit a string
+(define (expand-first ls)
+  (if (string? ls) ls (expand-first (first ls))))
