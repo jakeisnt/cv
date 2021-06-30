@@ -15,23 +15,23 @@
 ;; head of the document; holds title information.
 (define (head . elements)
   (case (current-poly-target)
-    [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]
+    [(html) (txexpr 'div '((id "head")) elements)]
     [(txt) elements]
-    [(html) (txexpr 'h2 empty elements)]))
+    [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
 
 ;; top of the document; typically the name
 (define (heading . elements)
   (case (current-poly-target)
-    [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]
+    [(html) (txexpr 'h2 empty elements)]
     [(txt) (list "=== "(map string-upcase elements) " ===")]
-    [(html) (txexpr 'h2 empty elements)]))
+    [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
 
 ;; job title or designation; typically a subheader
 (define (title . elements)
   (case (current-poly-target)
-    [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]
+    [(html) (txexpr 'h3 empty elements)]
     [(txt) `("*" ,@elements "*")]
-    [(html) (txexpr 'h3 empty elements)]))
+    [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]))
 
 (define (body . elements)
   `("-------------------------\n" ,@elements))
@@ -42,7 +42,10 @@
   (define urlstruct (string->url urlstr))
   (define service (cadr (reverse (string-split (url-host urlstruct) "."))))
   (define username (path/param-path (car (reverse (url-path urlstruct)))))
-  (list "- " service ": " username "  (" urlstr ")"))
+  (define urlname (list "- " service ": " username))
+  (case (current-poly-target)
+    [(html) (txexpr 'div (list (list 'href urlstr)) (list urlstr))]
+    [(txt) (list urlname " (" urlstr ")")]))
 
 (define (section . elements)
   (case (current-poly-target)
@@ -88,6 +91,35 @@
     [(txt) `("- " ,@elements "")]
     [(html) (txexpr 'strong empty elements)]))
 
+;; a list of experiences, skills or otherwise
+(define (explist . elements)
+  (define ls (mapca (lambda (a) (string-append a " + ")) (rm-newlines elements)))
+  (case (current-poly-target)
+    [(html) (txexpr 'div '((id "explist")) ls)]
+    [(txt) ls]))
+
+;; container for a sidebar (shown separately from a main body)
+(define (sidebar . elements)
+  (case (current-poly-target)
+    [(html) (txexpr 'h3 empty elements)]
+    [(txt) `("**" ,@elements "**")]
+    [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]))
+
+;; formatting for a date and time period
+;; should have enough information to display date however possible (racket datetime thing?)
+
+;; accepts either:
+;; racket date object
+;; iso 8601 formatted date string
+;; produces a date in a good format? maybe give it specific flags?
+;; for now it will just rerender what it was given
+(define (date . elements)
+  (case (current-poly-target)
+    [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]
+    [(txt) `("" ,@elements "")]
+    [(html) (txexpr 'h3 empty elements)]))
+
+;; --- helper functions
 ;; map but skip the last element of the list
 (define (mapca fn ls)
   (cond
@@ -101,26 +133,3 @@
 ;; add newline strings after every element in the list
 (define (add-newlines ls)
   (foldr (lambda (e rst) (cons e (cons "\n" rst))) '() ls))
-
-;; a list of experiences, skills or otherwise
-(define (explist . elements)
-  (print elements)
-  ; (print (map (lambda (a) (string-append a " + ")) elements))) */
-  (mapca (lambda (a) (string-append a " + "))
-         (rm-newlines elements)))
-
-;; container for a sidebar (shown separately from a main body)
-(define (sidebar . elements)
-  (case (current-poly-target)
-    [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]
-    [(txt) `("**" ,@elements "**")]
-    [(html) (txexpr 'h3 empty elements)]))
-
-;; formatting for a date and time period
-;; should have enough information to display date however possible (racket datetime thing?)
-(define (date . elements)
-  (case (current-poly-target)
-    [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]
-    [(txt) `("**" ,@elements "**")]
-    [(html) (txexpr 'h3 empty elements)]))
-

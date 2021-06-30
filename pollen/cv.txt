@@ -1,7 +1,7 @@
 === JACOB CHVATAL ===
 *Computational Designer*
-- github: jakeisnt  (https://github.com/jakeisnt)
-- linkedin: jacob-chvatal  (https://linkedin.com/in/jacob-chvatal)
+- github: jakeisnt (https://github.com/jakeisnt)
+- linkedin: jacob-chvatal (https://linkedin.com/in/jacob-chvatal)
 
 Formally trained engineer and self-taught product designer. I am passionate about the intersection of technology and the creative arts, in all its forms.
 Born, raised, and currently residing in the San Francisco Bay Area. Willing to relocate.
@@ -12,21 +12,21 @@ Work
 --
 |Uber
 |Design Engineer
-|**Feb. 2018 to Present**
+|Feb. 2018 to Present
 
 - Designed and built a suite of tools to help a team of 300+ designers do heir best work. Involved in all stages of he product development process, from concept to mock to production code.
 - Contributor to Base, the Uber design system, powering experiences seen by millions worldwide.
 
 --
 |Software Engineering Intern
-|**May 2017 - August 2017**
+|May 2017 - August 2017
 
 Growth and internal tools. Helped create improvements to the Uber driver signup flow, increasing UberMOTO registrations in Jakarta, Indonesia by 3%.
 
 --
 |Chartbeat
 |Software Engineering Intern
-|**June 2016 - Dec. 2016**
+|June 2016 - Dec. 2016
 
 Front-end engineer at a 75 person startup.
 Created a "trending topic" discovery tool, helping attract and retain clients (e.g. New York Times, the Atlantic, CNN). Contributed to core product redesign using React and Angular.
