@@ -61,7 +61,7 @@
   }
   ◊section{
     Skills
-    ◊experience{
+    ◊smexp{
       Design Tools
       ◊expbody{
         ◊explist{
@@ -72,7 +72,7 @@
         }
       }
     }
-    ◊experience{
+    ◊smexp{
       Programming Languages + Frameworks
       ◊expbody{
         6+ years of experience in web development (React, Node, Angular). Familiar with mobile (Android + iOS) environments as well as prototyping in Unity.

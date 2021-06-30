@@ -18,7 +18,7 @@
   (case (current-poly-target)
     [(html) (txexpr 'div '((id "summary")) elements)]
     [(txt) elements]
-    [(ltx pdf) (apply string-append `("\n\begin{cvparagraph} " ,@elements "\n\end{cvparagraph}"))]))
+    [(ltx pdf) (apply string-append `("\n\\begin{cvparagraph} " ,@elements "\n\\end{cvparagraph}"))]))
 
 ;; head of the document; holds title information.
 (define (head . elements)
@@ -33,29 +33,29 @@
                           (div ((id "sleft")) ,@left)
                           (div ((id "sright")) ,@right))
                         ,summary))]
-
     [(txt) elements]
-    [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
+    [(ltx pdf) (apply string-append elements)]))
 
 ;; top of the document; typically the name
 (define (heading . elements)
   (case (current-poly-target)
     [(html) (txexpr 'div '((id "heading")) elements)]
     [(txt) (list "=== "(map string-upcase elements) " ===")]
-    [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
+    [(ltx pdf) (apply string-append elements)]))
 
 ;; job title or designation; typically a subheader
 (define (title . elements)
   (case (current-poly-target)
     [(html) (txexpr 'div '((id "title")) elements)]
     [(txt) `("*" ,@elements "*")]
-    [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]))
+    [(ltx pdf) (apply string-append elements)]))
 
 ;; the main body of the document
 (define (body . elements)
   (case (current-poly-target)
     [(html) (txexpr 'div '((id "body")) elements)]
-    [(txt) `("-------------------------\n" ,@elements)]))
+    [(txt) `("-------------------------\n" ,@elements)]
+    [(ltx pdf) (apply string-append elements)]))
 
 ;; a social link with a service name and username provided by urlstring
 ;; assumes form of e.g. http://servicename.com/i/j/k/username
@@ -67,7 +67,8 @@
   (case (current-poly-target)
     [(html) (txexpr 'div `((id "social-link"))
                     `(,service ": " (a ((href ,urlstr)) ,username)))]
-    [(txt) (list "- " urlname " (" urlstr ")")]))
+    [(txt) (list "- " urlname " (" urlstr ")")]
+    [(ltx pdf) (apply string-append urlname)]))
 
 ;; a section of the document
 (define (section . elements)
@@ -78,35 +79,78 @@
                     `((div ((id "sectitle")) ,sectitle)
                       ,@secbody))]
     [(txt) `("\n" ,@elements "---")]
-    [(ltx pdf) (apply string-append `("\\cventry" ,@elements "}"))]))
+    [(ltx pdf) (apply string-append
+                      `("\\cvsection{" ,sectitle "}\n"
+                         "\\begin{cventries}\n"
+                         ,@elements
+                         "\\end{cventries}\n"))]))
 
 ;; an individual experience on the resume
 (define (experience . elements)
+  (define head (all-but-last elements))
+  (define ttl (first head))
+  (define org (second head))
+  (define dt (third head))
+  (define body (last elements))
   (case (current-poly-target)
     [(html)
-     (define head (all-but-last elements))
-     (define body (last elements))
      (txexpr 'div '((id "experience"))
                     `((div ((id "exphead"))
                           ,@(map (lambda (el) (list 'div el)) head))
                       ,body))]
     [(txt) `("--\n" ,@elements "\n")]
-    [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]))
+    [(ltx pdf) (apply string-append
+                      `("\\cventry\n"
+                        "{" ,ttl "}"
+                        "{" ,org "}\n"
+                        "{ loc }\n"
+                        "{" ,dt "}\n"
+                        "{\n" ,body "\n}\n"))]))
+
+
+;; "small experience" - no multiple headers
+(define (smexp . elements)
+  (define head (all-but-last elements))
+  (define body (last elements))
+  (define ttl (first head))
+  (case (current-poly-target)
+    [(html)
+     (txexpr 'div '((id "experience"))
+                    `((div ((id "exphead"))
+                          ,@(map (lambda (el) (list 'div el)) head))
+                      ,body))]
+    [(txt) `("--\n" ,@elements "\n")]
+    [(ltx pdf) (apply string-append
+                      `("\\cventry\n"
+                        "{" ,ttl "}"
+                        "{" ,ttl "}\n"
+                        "{ loc }\n"
+                        "{" ,ttl "}\n"
+                        "{\n" ,body "\n}\n"))]))
 
 ;; the body of an experience
 ;; typically contains things accomplished during the experience
 (define (expbody . elements)
+  (println elements)
+
+  (define nelem (if (and
+                     (and (list? elements) (not (empty? elements)))
+                     (and (list? (first elements)) (not (empty? (first elements)))))
+                    (first elements) elements))
   (case (current-poly-target)
     [(html) (txexpr 'div '((id "expbody")) elements)]
     [(txt) elements]
-    [(ltx pdf) (apply string-append `("\n\begin{cvitems}\n" ,@elements "\n\end{cvitems}"))]))
+    [(ltx pdf) (apply string-append
+                      `("\n\\begin{cvitems}\n"
+                        ,@nelem
+                        "\n\\end{cvitems}"))]))
 
 ;; bullet point in the body of an experience
 (define (expbullet . elements)
   (case (current-poly-target)
     [(html) (txexpr 'div '((id "expbullet")) elements)]
     [(txt) `("- " ,@elements "")]
-    [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]))
+    [(ltx pdf) (apply string-append `("\\item{ " ,@elements "}\n"))]))
 
 ;; a list of experiences, skills or otherwise
 ;; these are distinct from bullets. bullets are full length parts of a description,
@@ -116,14 +160,7 @@
   (case (current-poly-target)
     [(html) (txexpr 'div '((id "explist")) ls)]
     [(txt) ls]
-    [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]))
-
-;; container for a sidebar (shown separately from a main body)
-(define (sidebar . elements)
-  (case (current-poly-target)
-    [(html) (txexpr 'div '((id "sidebar")) elements)]
-    [(txt) `("**" ,@elements "**")]
-    [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]))
+    [(ltx pdf) ls]))
 
 ;; formatting for a date and time period
 ;; should have enough information to display date however possible (racket datetime thing?)
@@ -137,7 +174,7 @@
   (case (current-poly-target)
     [(html) (txexpr 'div '((id "date")) elements)]
     [(txt) `("" ,@elements "")]
-    [(ltx pdf) (apply string-append `("{\\date " ,@elements "}"))]))
+    [(ltx pdf) (apply string-append `("{\\date " ,@elements "}\n"))]))
 
 ;; --- helper functions
 ;; map but skip the last element of the list
