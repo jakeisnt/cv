@@ -1,0 +1,467 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+% Awesome CV LaTeX Template for CV/Resume
+%
+% This template has been downloaded from:
+% https://github.com/posquit0/Awesome-CV
+%
+% Author:
+% Claud D. Park <posquit0.bj@gmail.com>
+% http://www.posquit0.com
+%
+% Template license:
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+%
+
+
+%-------------------------------------------------------------------------------
+% CONFIGURATIONS
+%-------------------------------------------------------------------------------
+% A4 paper size by default, use 'letterpaper' for US letter
+\documentclass[11pt, a4paper]{awesome-cv}
+
+% Configure page margins with geometry
+\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
+
+% Specify the location of the included fonts
+\fontdir[fonts/]
+
+% Color for highlights
+% Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
+%                 awesome-nephritis, awesome-concrete, awesome-darknight
+\colorlet{awesome}{awesome-red}
+% Uncomment if you would like to specify your own color
+\definecolor{awesome}{HTML}{CA63A8}
+
+% Colors for text
+% Uncomment if you would like to specify your own color
+% \definecolor{darktext}{HTML}{414141}
+% \definecolor{text}{HTML}{333333}
+% \definecolor{graytext}{HTML}{5D5D5D}
+% \definecolor{lighttext}{HTML}{999999}
+
+% Set false if you don't want to highlight section with awesome color
+\setbool{acvSectionColorHighlight}{true}
+
+% If you would like to change the social information separator from a pipe (|) to something else
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+
+%-------------------------------------------------------------------------------
+%	PERSONAL INFORMATION
+%	Comment any of the lines below if they are not required
+%-------------------------------------------------------------------------------
+% Available options: circle|rectangle,edge/noedge,left/right
+% \photo[rectangle,edge,right]{./examples/profile}
+\name{Jacob}{Chvatal}
+\position{Software Architect{\enskip\cdotp\enskip}Security Expert}
+\address{42-8, Bangbae-ro 15-gil, Seocho-gu, Seoul, 00681, Rep. of KOREA}
+
+\mobile{(+82) 10-9030-1843}
+\email{posquit0.bj@gmail.com}
+\homepage{www.posquit0.com}
+\github{posquit0}
+\linkedin{posquit0}
+% \gitlab{gitlab-id}
+% \stackoverflow{SO-id}{SO-name}
+% \twitter{@twit}
+% \skype{skype-id}
+% \reddit{reddit-id}
+% \medium{madium-id}
+% \googlescholar{googlescholar-id}{name-to-display}
+%% \firstname and \lastname will be used
+% \googlescholar{googlescholar-id}{}
+% \extrainfo{extra informations}
+
+%-------------------------------------------------------------------------------
+\begin{document}
+
+% Print the header with above personal informations
+% Give optional argument to change alignment(C: center, L: left, R: right)
+\makecvheader[C]
+
+% Print the footer with 3 arguments(<left>, <center>, <right>)
+% Leave any of these blank if they are not needed
+\makecvfooter
+  {\today}
+  {Byungjin Park~~~·~~~Résumé}
+  {\thepage}
+
+
+%-------------------------------------------------------------------------------
+%	CV/RESUME CONTENT
+%	Each section is imported separately, open each file in turn to modify content
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+%	SECTION TITLE
+%-------------------------------------------------------------------------------
+\cvsection{Summary}
+
+
+%-------------------------------------------------------------------------------
+%	CONTENT
+%-------------------------------------------------------------------------------
+\begin{cvparagraph}
+
+%---------------------------------------------------------
+Current Site Reliability Engineer at start-up company Kasa. 7+ years experience specializing in the backend development, infrastructure automation, and computer hacking/security. Super nerd who loves Vim, Linux and OS X and enjoys to customize all of the development environment. Interested in devising a better problem-solving method for challenging tasks, and learning new technologies and tools if the need arises.
+\end{cvparagraph}
+
+%-------------------------------------------------------------------------------
+%	SECTION TITLE
+%-------------------------------------------------------------------------------
+\cvsection{Work Experience}
+
+
+%-------------------------------------------------------------------------------
+%	CONTENT
+%-------------------------------------------------------------------------------
+\begin{cventries}
+
+%---------------------------------------------------------
+  \cventry
+    {Software Architect} % Job title
+    {Omnious. Co., Ltd.} % Organization
+    {Seoul, S.Korea} % Location
+    {Jun. 2017 - May. 2018} % Date(s)
+    {
+      \begin{cvitems} % Description(s) of tasks/responsibilities
+        \item {Provisioned an easily managable hybrid infrastructure(Amazon AWS + On-premise) utilizing IaC(Infrastructure as Code) tools like Ansible, Packer and Terraform.}
+        \item {Built fully automated CI/CD pipelines on CircleCI for containerized applications using Docker, AWS ECR and Rancher.}
+        \item {Designed an overall service architecture and pipelines of the Machine Learning based Fashion Tagging API SaaS product with the micro-services architecture.}
+        \item {Implemented several API microservices in Node.js Koa and in the serverless AWS Lambda functions.}
+        \item {Deployed a centralized logging environment(ELK, Filebeat, CloudWatch, S3) which gather log data from docker containers and AWS resources.}
+        \item {Deployed a centralized monitoring environment(Grafana, InfluxDB, CollectD) which gather system metrics as well as docker run-time metrics.}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+  \cventry
+    {Co-founder \& Software Engineer} % Job title
+    {PLAT Corp.} % Organization
+    {Seoul, S.Korea} % Location
+    {Jan. 2016 - Jun. 2017} % Date(s)
+    {
+      \begin{cvitems} % Description(s) of tasks/responsibilities
+        \item {Implemented RESTful API server for car rental booking application(CARPLAT in Google Play).}
+        \item {Built and deployed overall service infrastructure utilizing Docker container, CircleCI, and several AWS stack(Including EC2, ECS, Route 53, S3, CloudFront, RDS, ElastiCache, IAM), focusing on high-availability, fault tolerance, and auto-scaling.}
+        \item {Developed an easy-to-use Payment module which connects to major PG(Payment Gateway) companies in Korea.}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+  \cventry
+    {Software Engineer \& Security Researcher (Compulsory Military Service)} % Job title
+    {R.O.K Cyber Command, MND} % Organization
+    {Seoul, S.Korea} % Location
+    {Aug. 2014 - Apr. 2016} % Date(s)
+    {
+      \begin{cvitems} % Description(s) of tasks/responsibilities
+        \item {Lead engineer on agent-less backtracking system that can discover client device's fingerprint(including public and private IP) independently of the Proxy, VPN and NAT.}
+        \item {Implemented a distributed web stress test tool with high anonymity.}
+        \item {Implemented a military cooperation system which is web based real time messenger in Scala on Lift.}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+  \cventry
+    {Game Developer Intern at Global Internship Program} % Job title
+    {NEXON} % Organization
+    {Seoul, S.Korea \& LA, U.S.A} % Location
+    {Jan. 2013 - Feb. 2013} % Date(s)
+    {
+      \begin{cvitems} % Description(s) of tasks/responsibilities
+        \item {Developed in Cocos2d-x an action puzzle game(Dragon Buster) targeting U.S. market.}
+        \item {Implemented API server which is communicating with game client and In-App Store, along with two other team members who wrote the game logic and designed game graphics.}
+        \item {Won the 2nd prize in final evaluation.}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+  \cventry
+    {Software Engineer} % Job title
+    {ShitOne Corp.} % Organization
+    {Seoul, S.Korea} % Location
+    {Dec. 2011 - Feb. 2012} % Date(s)
+    {
+      \begin{cvitems} % Description(s) of tasks/responsibilities
+        \item {Developed a proxy drive smartphone application which connects proxy driver and customer.}
+        \item {Implemented overall Android application logic and wrote API server for community service, along with lead engineer who designed bidding protocol on raw socket and implemented API server for bidding.}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+  \cventry
+    {Freelance Penetration Tester} % Job title
+    {SAMSUNG Electronics} % Organization
+    {S.Korea} % Location
+    {Sep. 2013, Mar. 2011 - Oct. 2011} % Date(s)
+    {
+      \begin{cvitems} % Description(s) of tasks/responsibilities
+        \item {Conducted penetration testing on SAMSUNG KNOX, which is solution for enterprise mobile security.}
+        \item {Conducted penetration testing on SAMSUNG Smart TV.}
+      \end{cvitems}
+      %\begin{cvsubentries}
+      %  \cvsubentry{}{KNOX(Solution for Enterprise Mobile Security) Penetration Testing}{Sep. 2013}{}
+      %  \cvsubentry{}{Smart TV Penetration Testing}{Mar. 2011 - Oct. 2011}{}
+      %\end{cvsubentries}
+    }
+
+%---------------------------------------------------------
+\end{cventries}
+
+%-------------------------------------------------------------------------------
+%	SECTION TITLE
+%-------------------------------------------------------------------------------
+\cvsection{Honors \& Awards}
+
+
+%-------------------------------------------------------------------------------
+%	SUBSECTION TITLE
+%-------------------------------------------------------------------------------
+\cvsubsection{International}
+
+
+%-------------------------------------------------------------------------------
+%	CONTENT
+%-------------------------------------------------------------------------------
+\begin{cvhonors}
+
+%---------------------------------------------------------
+  \cvhonor
+    {Finalist} % Award
+    {DEFCON 26th CTF Hacking Competition World Final} % Event
+    {Las Vegas, U.S.A} % Location
+    {2018} % Date(s)
+
+%---------------------------------------------------------
+  \cvhonor
+    {Finalist} % Award
+    {DEFCON 25th CTF Hacking Competition World Final} % Event
+    {Las Vegas, U.S.A} % Location
+    {2017} % Date(s)
+
+%---------------------------------------------------------
+  \cvhonor
+    {Finalist} % Award
+    {DEFCON 22nd CTF Hacking Competition World Final} % Event
+    {Las Vegas, U.S.A} % Location
+    {2014} % Date(s)
+
+%---------------------------------------------------------
+  \cvhonor
+    {Finalist} % Award
+    {DEFCON 21st CTF Hacking Competition World Final} % Event
+    {Las Vegas, U.S.A} % Location
+    {2013} % Date(s)
+
+%---------------------------------------------------------
+  \cvhonor
+    {Finalist} % Award
+    {DEFCON 19th CTF Hacking Competition World Final} % Event
+    {Las Vegas, U.S.A} % Location
+    {2011} % Date(s)
+
+%---------------------------------------------------------
+\end{cvhonors}
+
+
+%-------------------------------------------------------------------------------
+%	SUBSECTION TITLE
+%-------------------------------------------------------------------------------
+\cvsubsection{Domestic}
+
+
+%-------------------------------------------------------------------------------
+%	CONTENT
+%-------------------------------------------------------------------------------
+\begin{cvhonors}
+
+%---------------------------------------------------------
+  \cvhonor
+    {3rd Place} % Award
+    {WITHCON Hacking Competition Final} % Event
+    {Seoul, S.Korea} % Location
+    {2015} % Date(s)
+
+%---------------------------------------------------------
+  \cvhonor
+    {Silver Prize} % Award
+    {KISA HDCON Hacking Competition Final} % Event
+    {Seoul, S.Korea} % Location
+    {2017} % Date(s)
+
+%---------------------------------------------------------
+  \cvhonor
+    {Silver Prize} % Award
+    {KISA HDCON Hacking Competition Final} % Event
+    {Seoul, S.Korea} % Location
+    {2013} % Date(s)
+
+%---------------------------------------------------------
+\end{cvhonors}
+
+%-------------------------------------------------------------------------------
+%	SECTION TITLE
+%-------------------------------------------------------------------------------
+\cvsection{Presentation}
+
+
+%-------------------------------------------------------------------------------
+%	CONTENT
+%-------------------------------------------------------------------------------
+\begin{cventries}
+
+%---------------------------------------------------------
+  \cventry
+    {Presenter for <Hosting Web Application for Free utilizing GitHub, Netlify and CloudFlare>} % Role
+    {DevFest Seoul by Google Developer Group Korea} % Event
+    {Seoul, S.Korea} % Location
+    {Nov. 2017} % Date(s)
+    {
+      \begin{cvitems} % Description(s)
+        \item {Introduced the history of web technology and the JAM stack which is for the modern web application development.}
+        \item {Introduced how to freely host the web application with high performance utilizing global CDN services.}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+  \cventry
+    {Presenter for <DEFCON 20th : The way to go to Las Vegas>} % Role
+    {6th CodeEngn (Reverse Engineering Conference)} % Event
+    {Seoul, S.Korea} % Location
+    {Jul. 2012} % Date(s)
+    {
+      \begin{cvitems} % Description(s)
+        \item {Introduced CTF(Capture the Flag) hacking competition and advanced techniques and strategy for CTF}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+\end{cventries}
+
+
+%-------------------------------------------------------------------------------
+%	SECTION TITLE
+%-------------------------------------------------------------------------------
+\cvsection{Writing}
+
+
+%-------------------------------------------------------------------------------
+%	CONTENT
+%-------------------------------------------------------------------------------
+\begin{cventries}
+
+%---------------------------------------------------------
+  \cventry
+    {Founder \& Writer} % Role
+    {A Guide for Developers in Start-up} % Title
+    {Facebook Page} % Location
+    {Jan. 2015 - PRESENT} % Date(s)
+    {
+      \begin{cvitems} % Description(s)
+        \item {Drafted daily news for developers in Korea about IT technologies, issues about start-up.}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+\end{cventries}
+
+%-------------------------------------------------------------------------------
+%	SECTION TITLE
+%-------------------------------------------------------------------------------
+\cvsection{Program Committees}
+
+
+%-------------------------------------------------------------------------------
+%	CONTENT
+%-------------------------------------------------------------------------------
+\begin{cvhonors}
+
+%---------------------------------------------------------
+  \cvhonor
+    {Problem Writer} % Position
+    {2016 CODEGATE Hacking Competition World Final} % Committee
+    {S.Korea} % Location
+    {2016} % Date(s)
+
+%---------------------------------------------------------
+  \cvhonor
+    {Organizer \& Co-director} % Position
+    {1st POSTECH Hackathon} % Committee
+    {S.Korea} % Location
+    {2013} % Date(s)
+
+%---------------------------------------------------------
+\end{cvhonors}
+
+%-------------------------------------------------------------------------------
+%	SECTION TITLE
+%-------------------------------------------------------------------------------
+\cvsection{Education}
+
+
+%-------------------------------------------------------------------------------
+%	CONTENT
+%-------------------------------------------------------------------------------
+\begin{cventries}
+
+%---------------------------------------------------------
+  \cventry
+    {B.S. in Computer Science and Engineering} % Degree
+    {POSTECH(Pohang University of Science and Technology)} % Institution
+    {Pohang, S.Korea} % Location
+    {Mar. 2010 - Aug. 2017} % Date(s)
+    {
+      \begin{cvitems} % Description(s) bullet points
+        \item {Got a Chun Shin-Il Scholarship which is given to promising students in CSE Dept.}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+\end{cventries}
+
+%-------------------------------------------------------------------------------
+%	SECTION TITLE
+%-------------------------------------------------------------------------------
+\cvsection{Extracurricular Activity}
+
+
+%-------------------------------------------------------------------------------
+%	CONTENT
+%-------------------------------------------------------------------------------
+\begin{cventries}
+
+%---------------------------------------------------------
+  \cventry
+    {Core Member \& President at 2013} % Affiliation/role
+    {PoApper (Developers' Network of POSTECH)} % Organization/group
+    {Pohang, S.Korea} % Location
+    {Jun. 2010 - Jun. 2017} % Date(s)
+    {
+      \begin{cvitems} % Description(s) of experience/contributions/knowledge
+        \item {Reformed the society focusing on software engineering and building network on and off campus.}
+        \item {Proposed various marketing and network activities to raise awareness.}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+  \cventry
+    {Member} % Affiliation/role
+    {PLUS (Laboratory for UNIX Security in POSTECH)} % Organization/group
+    {Pohang, S.Korea} % Location
+    {Sep. 2010 - Oct. 2011} % Date(s)
+    {
+      \begin{cvitems} % Description(s) of experience/contributions/knowledge
+        \item {Gained expertise in hacking \& security areas, especially about internal of operating system based on UNIX and several exploit techniques.}
+        \item {Participated on several hacking competition and won a good award.}
+        \item {Conducted periodic security checks on overall IT system as a member of POSTECH CERT.}
+        \item {Conducted penetration testing commissioned by national agency and corporation.}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+\end{cventries}
+
+%-------------------------------------------------------------------------------
+\end{document}
