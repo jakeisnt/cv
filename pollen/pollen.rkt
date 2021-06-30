@@ -81,9 +81,9 @@
     [(txt) `("\n" ,@elements "---")]
     [(ltx pdf) (apply string-append
                       `("\\cvsection{" ,sectitle "}\n"
-                         "\\begin{cventries}\n"
+                         "\\begin{cventries}"
                          ,@secbody
-                         "\\end{cventries}\n"))]))
+                         "\\end{cventries}"))]))
 
 ;; an individual experience on the resume
 (define (experience . elements)
@@ -101,11 +101,11 @@
     [(txt) `("--\n" ,@elements "\n")]
     [(ltx pdf) (apply string-append
                       `("\\cventry\n"
-                        "{" ,ttl "}"
+                        "{" ,ttl "}\n"
                         "{" ,org "}\n"
                         "{ loc }\n"
                         "{" ,dt "}\n"
-                        "{\n" ,body "\n}\n"))]))
+                        "{" ,body "\n}"))]))
 
 
 ;; "small experience" - no multiple headers
@@ -137,18 +137,19 @@
     [(ltx pdf)
      (define nelem (expand-until-list elements))
      (apply string-append
-                      `("\n\\begin{cvitems}"
-                        "    \n" ,@nelem
-                        "\n\\end{cvitems}"))]))
+                      `("\n\\begin{cvitems}\n"
+                         ,@nelem
+                        "\\end{cvitems}"))]))
 
 ;; bullet point in the body of an experience
 (define (expbullet . elements)
+  (print elements)
   (case (current-poly-target)
     [(html) (txexpr 'div '((id "expbullet")) elements)]
     [(txt) `("- " ,@elements "")]
     [(ltx pdf)
      (define elem (expand-until-list elements))
-     (apply string-append `("\\item{ " ,@elem "}\n"))]))
+     (apply string-append `("\\item{ " ,@elem "}"))]))
 
 ;; a list of experiences, skills or otherwise
 ;; these are distinct from bullets. bullets are full length parts of a description,

@@ -28,7 +28,7 @@
       Software Engineering Intern
       ◊date{May 2017 - August 2017}
       ◊expbody{
-        Growth and internal tools. Helped create improvements to the Uber driver signup flow, increasing UberMOTO registrations in Jakarta, Indonesia by 3%.
+        Growth and internal tools. Helped create improvements to the Uber driver signup flow, increasing UberMOTO registrations in Jakarta, Indonesia by 3 pct.
       }
     }
     ◊experience{
