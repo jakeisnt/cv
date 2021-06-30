@@ -1,5 +1,8 @@
 #lang racket/base
 
+;; this is a rudimentary expression language for customizing resumes
+;; embedded in pollen!
+
 (require racket/date racket/string racket/list txexpr pollen/setup net/url)
 (provide (all-defined-out))
 
@@ -12,24 +15,48 @@
 (define (get-date)
   (date->string (current-date)))
 
+(define (summary . elements)
+  (case (current-poly-target)
+    [(html) (txexpr 'div '((id "summary")) elements)]
+    [(txt) elements]
+    [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
+
+(define (halign . elements)
+  (case (current-poly-target)
+    [(html) (txexpr 'div '((id "halign")) elements)]
+    [(txt) elements]
+    [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
+
+(define (fleft . elements)
+  (case (current-poly-target)
+    [(html) (txexpr 'div '((id "fleft")) elements)]
+    [(txt) elements]
+    [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
+
+(define (fright . elements)
+  (case (current-poly-target)
+    [(html) (txexpr 'div '((id "fright")) elements)]
+    [(txt) elements]
+    [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
+
 ;; head of the document; holds title information.
 (define (head . elements)
   (case (current-poly-target)
-    [(html) (txexpr 'div '((id "docheader")) elements)]
+    [(html) (txexpr 'div '((id "head")) elements)]
     [(txt) elements]
     [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
 
 ;; top of the document; typically the name
 (define (heading . elements)
   (case (current-poly-target)
-    [(html) (txexpr 'h2 empty elements)]
+    [(html) (txexpr 'div '((id "heading")) elements)]
     [(txt) (list "=== "(map string-upcase elements) " ===")]
     [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
 
 ;; job title or designation; typically a subheader
 (define (title . elements)
   (case (current-poly-target)
-    [(html) (txexpr 'h3 empty elements)]
+    [(html) (txexpr 'div '((id "title")) elements)]
     [(txt) `("*" ,@elements "*")]
     [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]))
 
@@ -45,20 +72,28 @@
   (define urlstruct (string->url urlstr))
   (define service (cadr (reverse (string-split (url-host urlstruct) "."))))
   (define username (path/param-path (car (reverse (url-path urlstruct)))))
-  (define urlname (list service ": " username))
+  (define urlname `(,service ": " ,username))
   (case (current-poly-target)
-    [(html) (txexpr 'a (list (list 'href urlstr)) urlname)]
+    [(html) (txexpr 'div `((id "social-link"))
+                    `(,service ": " (a ((href ,urlstr)) ,username)))]
     [(txt) (list "- " urlname " (" urlstr ")")]))
 
 (define (section . elements)
   (case (current-poly-target)
-    [(html) (txexpr 'section empty elements)]
+    [(html) (txexpr 'section '((id "section")) elements)]
     [(txt) `("\n" ,@elements "---")]
+    [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
+
+;; a section title
+(define (sectitle . elements)
+  (case (current-poly-target)
+    [(html) (txexpr 'div '((id "sectitle")) elements)]
+    [(txt) `(,@elements)]
     [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
 
 (define (emph . elements)
   (case (current-poly-target)
-    [(html) (txexpr 'strong empty elements)]
+    [(html) (txexpr 'strong '((id "emph")) elements)]
     [(txt) `("**" ,@elements "**")]
     [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]))
 
@@ -81,14 +116,14 @@
 ;; typically contains things accomplished during the experience
 (define (expbody . elements)
   (case (current-poly-target)
-    [(html) (txexpr 'p empty elements)]
+    [(html) (txexpr 'div '((id "expbody")) elements)]
     [(txt) elements]
     [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]))
 
 ;; bullet point in the body of an experience
 (define (expbullet . elements)
   (case (current-poly-target)
-    [(html) (txexpr 'li empty elements)]
+    [(html) (txexpr 'div '((id "expbullet")) elements)]
     [(txt) `("- " ,@elements "")]
     [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]))
 
@@ -103,7 +138,7 @@
 ;; container for a sidebar (shown separately from a main body)
 (define (sidebar . elements)
   (case (current-poly-target)
-    [(html) (txexpr 'h3 empty elements)]
+    [(html) (txexpr 'div '((id "sidebar")) elements)]
     [(txt) `("**" ,@elements "**")]
     [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]))
 

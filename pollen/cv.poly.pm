@@ -1,12 +1,19 @@
 #lang pollen
 
 ◊head{
-  ◊heading{Jacob Chvatal}
-  ◊title{Computational Designer}
-  ◊link{https://github.com/jakeisnt}
-  ◊link{https://linkedin.com/in/jacob-chvatal}
+  ◊halign{
+    ◊sleft{
+      ◊heading{Jacob Chvatal}
+      ◊title{Computational Designer}
+    }
 
-  ◊description{
+    ◊fright{
+      ◊link{https://github.com/jakeisnt}
+      ◊link{https://linkedin.com/in/jacob-chvatal}
+    }
+  }
+
+  ◊summary{
     Formally trained engineer and self-taught product designer. I am passionate about the intersection of technology and the creative arts, in all its forms.
     Born, raised, and currently residing in the San Francisco Bay Area. Willing to relocate.
   }
@@ -22,7 +29,7 @@
         ◊date{Feb. 2018 to Present}
       }
       ◊expbody{
-        ◊expbullet{Designed and built a suite of tools to help a team of 300+ designers do heir best work. Involved in all stages of he product development process, from concept to mock to production code.}
+        ◊expbullet{Designed and built a suite of tools to help a team of 300+ designers do their best work. Involved in all stages of he product development process, from concept to mock to production code.}
         ◊expbullet{Contributor to Base, the Uber design system, powering experiences seen by millions worldwide.}
       }
     }
@@ -42,13 +49,13 @@
         ◊date{June 2016 - Dec. 2016}
       }
       ◊expbody{
-        Front-end engineer at a 75 person startup.
-        Created a "trending topic" discovery tool, helping attract and retain clients (e.g. New York Times, the Atlantic, CNN). Contributed to core product redesign using React and Angular.
+        ◊expbullet{Front-end engineer at a 75 person startup.}
+        ◊expbullet{Created a "trending topic" discovery tool, helping attract and retain clients (e.g. New York Times, the Atlantic, CNN). Contributed to core product redesign using React and Angular.}
       }
     }
   }
   ◊section{
-    ◊title{Education}
+    ◊sectitle{Education}
     ◊experience{
       ◊exphead{
         UC Berkeley
@@ -68,7 +75,7 @@
     }
   }
   ◊section{
-    ◊title{Skills}
+    ◊sectitle{Skills}
     ◊experience{
       ◊exphead{
         Design Tools

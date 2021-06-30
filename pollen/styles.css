@@ -1,0 +1,137 @@
+html {
+    font-size: 20px;
+    font-family: "Arial", "Helvetica", sans-serif;
+    height: 100%;
+    width: 1000px;
+}
+
+#head {
+    padding: 0.5em 1em;
+}
+
+#summary {
+    display: block;
+    padding-top: 0.125em;
+    white-space: pre-wrap;
+}
+
+#halign {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1em;
+}
+
+#fleft {
+    float: left;
+}
+
+#fright {
+    right: 0;
+    float: right;
+    padding-right: 2em;
+}
+
+#sectitle {
+    overflow: hidden;
+    padding-top: 1em;
+}
+
+#sectitle:after {
+    content:"";
+    display: inline-block;
+    height: 0.5em;
+    vertical-align: bottom;
+    width: 100%;
+    margin-right: -100%;
+    margin-left: 20px;
+    border-top: 1px solid grey;
+}
+
+#experience {
+    padding: 0.75em 0.75em;
+    display: flex;
+}
+
+#exphead {
+    display: block;
+    color: gray;
+    float: left;
+    width: 35%;
+}
+
+#expbody {
+    float: right;
+    right: 0;
+    width: 65%;
+}
+
+#expbullet {
+    padding-top: 0.25em;
+}
+
+#social-link {
+    display: block;
+}
+
+a:link {
+    color: #484848;
+}
+
+a:visited {
+    color: #585858;
+}
+
+a:hover {
+    color: gray;
+}
+
+a:active {
+    color: blue;
+}
+
+a:active {
+    color: blue;
+}
+
+a[href^="./"] {
+    color: #505050;
+}
+
+::selection {
+    background-color: #99ccff;
+}
+
+footer {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
+}
+
+img {
+    vertical-align: middle;
+}
+
+#br {
+    display: block;
+    margin: 0 0;
+}
+
+h1 {
+    display: block;
+    font-size: 1.17em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+h2 {
+    display: block;
+    font-size: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
