@@ -1,5 +1,16 @@
-\documentclass[a4paper,12pt]{letter}
+\documentclass[20pt]{article}
+%------------------------Dimensions--------------------------------------------
+\topmargin=0.0in %length of margin at the top of the page (1 inch added by default)
+\oddsidemargin=0.0in %length of margin on sides for odd pages
+\evensidemargin=0in %length of margin on sides for even pages
+\textwidth=6.5in %How wide you want your text to be
+\marginparwidth=0.5in
+\headheight=0pt %1in margins at top and bottom (1 inch is added to this value by default)
+\headsep=0pt %Increase to increase white space in between headers and the top of the page
+\textheight=9.0in %How tall the text body is allowed to be on each page
 \begin{document}
+\title{◊select['h2 doc] - Resume}
+
 ◊(require racket/list)
 ◊(apply string-append (filter string? (flatten doc)))
 \end{document}

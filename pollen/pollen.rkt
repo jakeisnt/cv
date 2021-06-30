@@ -82,7 +82,7 @@
   (case (current-poly-target)
     [(html) (txexpr 'section '((id "section")) elements)]
     [(txt) `("\n" ,@elements "---")]
-    [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
+    [(ltx pdf) (apply string-append `("{\\section{ " ,@elements "}"))]))
 
 ;; a section title
 (define (sectitle . elements)
@@ -90,12 +90,6 @@
     [(html) (txexpr 'div '((id "sectitle")) elements)]
     [(txt) `(,@elements)]
     [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
-
-(define (emph . elements)
-  (case (current-poly-target)
-    [(html) (txexpr 'strong '((id "emph")) elements)]
-    [(txt) `("**" ,@elements "**")]
-    [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]))
 
 ;; an individual experience on the resume
 (define (experience . elements)
@@ -154,7 +148,7 @@
   (case (current-poly-target)
     [(html) (txexpr 'div '((id "date")) elements)]
     [(txt) `("" ,@elements "")]
-    [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]))
+    [(ltx pdf) (apply string-append `("{\\date " ,@elements "}"))]))
 
 ;; --- helper functions
 ;; map but skip the last element of the list
