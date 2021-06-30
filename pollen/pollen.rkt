@@ -82,7 +82,7 @@
     [(ltx pdf) (apply string-append
                       `("\\cvsection{" ,sectitle "}\n"
                          "\\begin{cventries}\n"
-                         ,@elements
+                         ,@secbody
                          "\\end{cventries}\n"))]))
 
 ;; an individual experience on the resume
@@ -121,12 +121,12 @@
                       ,body))]
     [(txt) `("--\n" ,@elements "\n")]
     [(ltx pdf) (apply string-append
-                      `("\\cventry\n"
+                      `("\\cventry"
                         "{" ,ttl "}"
-                        "{" ,ttl "}\n"
-                        "{ loc }\n"
-                        "{" ,ttl "}\n"
-                        "{\n" ,body "\n}\n"))]))
+                        "{" ,ttl "}"
+                        "{ loc }"
+                        "{" ,ttl "}"
+                        "{" ,body "\n}\n"))]))
 
 ;; the body of an experience
 ;; typically contains things accomplished during the experience
@@ -135,10 +135,10 @@
     [(html) (txexpr 'div '((id "expbody")) elements)]
     [(txt) elements]
     [(ltx pdf)
-     (define nelem (expand-first elements))
+     (define nelem (expand-until-list elements))
      (apply string-append
-                      `("\n\\begin{cvitems}\n"
-                        ,nelem
+                      `("\n\\begin{cvitems}"
+                        "    \n" ,@nelem
                         "\n\\end{cvitems}"))]))
 
 ;; bullet point in the body of an experience
@@ -147,8 +147,8 @@
     [(html) (txexpr 'div '((id "expbullet")) elements)]
     [(txt) `("- " ,@elements "")]
     [(ltx pdf)
-     (define elem (expand-first elements))
-     (apply string-append `("\\item{ " ,elem "}\n"))]))
+     (define elem (expand-until-list elements))
+     (apply string-append `("\\item{ " ,@elem "}\n"))]))
 
 ;; a list of experiences, skills or otherwise
 ;; these are distinct from bullets. bullets are full length parts of a description,
@@ -196,3 +196,6 @@
 ;; expand the first item of the list until we hit a string
 (define (expand-first ls)
   (if (string? ls) ls (expand-first (first ls))))
+
+(define (expand-until-list ls)
+  (if (string? (first ls)) ls (expand-until-list (first ls))))

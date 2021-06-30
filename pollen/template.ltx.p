@@ -69,10 +69,8 @@
 % \extrainfo{extra informations}
 
 %-------------------------------------------------------------------------------
-
 \begin{document}
 \title{◊select['h2 doc] - Resume}
-
 ◊(require racket/list)
 ◊(apply string-append (filter string? (flatten doc)))
 \end{document}
