@@ -28,3 +28,4 @@ tmp/
 .direnv/*
 pollen/compiled
 !.direnv/.git-keep
+pollen/.auctex-auto

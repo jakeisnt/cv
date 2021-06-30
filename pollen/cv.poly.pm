@@ -1,18 +1,10 @@
 #lang pollen
 
 ◊head{
-  ◊halign{
-    ◊sleft{
-      ◊heading{Jacob Chvatal}
-      ◊title{Computational Designer}
-    }
-
-    ◊fright{
-      ◊link{https://github.com/jakeisnt}
-      ◊link{https://linkedin.com/in/jacob-chvatal}
-    }
-  }
-
+  ◊heading{Jacob Chvatal}
+  ◊title{Computational Designer}
+  ◊link{https://github.com/jakeisnt}
+  ◊link{https://linkedin.com/in/jacob-chvatal}
   ◊summary{
     Formally trained engineer and self-taught product designer. I am passionate about the intersection of technology and the creative arts, in all its forms.
     Born, raised, and currently residing in the San Francisco Bay Area. Willing to relocate.
@@ -23,31 +15,26 @@
   ◊section{
     ◊sectitle{Work}
     ◊experience{
-      ◊exphead{
-        Uber
-        Design Engineer
-        ◊date{Feb. 2018 to Present}
-      }
+      Uber
+      Design Engineer
+      ◊date{Feb. 2018 to Present}
       ◊expbody{
-        ◊expbullet{Designed and built a suite of tools to help a team of 300+ designers do their best work. Involved in all stages of he product development process, from concept to mock to production code.}
+        ◊expbullet{Designed and built a suite of tools to help a team of 300+ designers do their best work. Involved in all stages of the product development process, from concept to mock to production code.}
         ◊expbullet{Contributor to Base, the Uber design system, powering experiences seen by millions worldwide.}
       }
     }
     ◊experience{
-      ◊exphead{
-        Software Engineering Intern
-        ◊date{May 2017 - August 2017}
-      }
+      Uber
+      Software Engineering Intern
+      ◊date{May 2017 - August 2017}
       ◊expbody{
         Growth and internal tools. Helped create improvements to the Uber driver signup flow, increasing UberMOTO registrations in Jakarta, Indonesia by 3%.
       }
     }
     ◊experience{
-      ◊exphead{
-        Chartbeat
-        Software Engineering Intern
-        ◊date{June 2016 - Dec. 2016}
-      }
+      Chartbeat
+      Software Engineering Intern
+      ◊date{June 2016 - Dec. 2016}
       ◊expbody{
         ◊expbullet{Front-end engineer at a 75 person startup.}
         ◊expbullet{Created a "trending topic" discovery tool, helping attract and retain clients (e.g. New York Times, the Atlantic, CNN). Contributed to core product redesign using React and Angular.}
@@ -57,12 +44,10 @@
   ◊section{
     ◊sectitle{Education}
     ◊experience{
-      ◊exphead{
-        UC Berkeley
-        BA, Computer Science
-        2014-2017
-        3.3 GPA
-      }
+      UC Berkeley
+      BA, Computer Science
+      2014-2017
+      3.3 GPA
       ◊expbody{
         HCI emphasis. Extracirricular highlights include:
         ◊expbullet{Teaching front-end web development at Cal Hacks, the worlds largest collegiate hackathon}
@@ -77,9 +62,7 @@
   ◊section{
     ◊sectitle{Skills}
     ◊experience{
-      ◊exphead{
-        Design Tools
-      }
+      Design Tools
       ◊expbody{
         ◊explist{
           Figma
@@ -90,9 +73,7 @@
       }
     }
     ◊experience{
-      ◊exphead{
-        Programming Languages + Frameworks
-      }
+      Programming Languages + Frameworks
       ◊expbody{
         6+ years of experience in web development (React, Node, Angular). Familiar with mobile (Android + iOS) environments as well as prototyping in Unity.
       }

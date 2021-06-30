@@ -12,37 +12,28 @@
   (provide (all-defined-out))
   (define poly-targets '(html txt ltx pdf)))
 
-(define (get-date)
-  (date->string (current-date)))
-
+;; summary text at the top of the resume
+;; usually quickly describes job title and interests
 (define (summary . elements)
   (case (current-poly-target)
     [(html) (txexpr 'div '((id "summary")) elements)]
     [(txt) elements]
-    [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
-
-(define (halign . elements)
-  (case (current-poly-target)
-    [(html) (txexpr 'div '((id "halign")) elements)]
-    [(txt) elements]
-    [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
-
-(define (fleft . elements)
-  (case (current-poly-target)
-    [(html) (txexpr 'div '((id "fleft")) elements)]
-    [(txt) elements]
-    [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
-
-(define (fright . elements)
-  (case (current-poly-target)
-    [(html) (txexpr 'div '((id "fright")) elements)]
-    [(txt) elements]
-    [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
+    [(ltx pdf) (apply string-append `("\n\begin{cvparagraph} " ,@elements "\n\end{cvparagraph}"))]))
 
 ;; head of the document; holds title information.
 (define (head . elements)
+  (define summary (last elements))
+  (define header-items (all-but-last elements))
+  (define split-len (/ (length header-items) 2))
+  (define left (take header-items split-len ))
+  (define right (drop  header-items split-len))
   (case (current-poly-target)
-    [(html) (txexpr 'div '((id "head")) elements)]
+    [(html) (txexpr 'div '((id "head"))
+                    `((div ((id "halign"))
+                          (div ((id "sleft")) ,@left)
+                          (div ((id "sright")) ,@right))
+                        ,summary))]
+
     [(txt) elements]
     [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
 
@@ -78,32 +69,31 @@
                     `(,service ": " (a ((href ,urlstr)) ,username)))]
     [(txt) (list "- " urlname " (" urlstr ")")]))
 
+;; a section of the document
 (define (section . elements)
   (case (current-poly-target)
     [(html) (txexpr 'section '((id "section")) elements)]
     [(txt) `("\n" ,@elements "---")]
-    [(ltx pdf) (apply string-append `("{\\section{ " ,@elements "}"))]))
+    [(ltx pdf) (apply string-append `("\\cventry" ,@elements "}"))]))
 
 ;; a section title
 (define (sectitle . elements)
   (case (current-poly-target)
     [(html) (txexpr 'div '((id "sectitle")) elements)]
     [(txt) `(,@elements)]
-    [(ltx pdf) (apply string-append `("{\\huge " ,@elements "}"))]))
+    [(ltx pdf) (apply string-append `("\n\\cvsection{ " ,@elements "}"))]))
 
 ;; an individual experience on the resume
 (define (experience . elements)
   (case (current-poly-target)
-    [(html) (txexpr 'div '((id "experience")) elements)]
+    [(html)
+     (define head (all-but-last elements))
+     (define body (last elements))
+     (txexpr 'div '((id "experience"))
+                    `((div ((id "exphead"))
+                          ,@(map (lambda (el) (list 'div el)) head))
+                      ,body))]
     [(txt) `("--\n" ,@elements "\n")]
-    [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]))
-
-;; the header of this experience
-;; typically encludes place, role and time period
-(define (exphead . elements)
-  (case (current-poly-target)
-    [(html) (txexpr 'div '((id "exphead")) (map (lambda (el) (list 'div el)) elements))]
-    [(txt) (add-newlines (map (lambda (a) (list "|" a)) (rm-newlines elements))) ]
     [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]))
 
 ;; the body of an experience
@@ -112,7 +102,7 @@
   (case (current-poly-target)
     [(html) (txexpr 'div '((id "expbody")) elements)]
     [(txt) elements]
-    [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]))
+    [(ltx pdf) (apply string-append `("\n\begin{cvitems}\n" ,@elements "\n\end{cvitems}"))]))
 
 ;; bullet point in the body of an experience
 (define (expbullet . elements)
@@ -122,6 +112,8 @@
     [(ltx pdf) (apply string-append `("{\\bf " ,@elements "}"))]))
 
 ;; a list of experiences, skills or otherwise
+;; these are distinct from bullets. bullets are full length parts of a description,
+;; while these list elements are for showing in a list inline.
 (define (explist . elements)
   (define ls (mapca (lambda (a) (string-append a " + ")) (rm-newlines elements)))
   (case (current-poly-target)
@@ -164,3 +156,7 @@
 ;; add newline strings after every element in the list
 (define (add-newlines ls)
   (foldr (lambda (e rst) (cons e (cons "\n" rst))) '() ls))
+
+;; produce the list with all but its last element
+(define (all-but-last ls)
+  (reverse (cdr (reverse ls))))
