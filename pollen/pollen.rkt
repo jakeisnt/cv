@@ -71,17 +71,14 @@
 
 ;; a section of the document
 (define (section . elements)
+  (define sectitle (first elements))
+  (define secbody (rest elements))
   (case (current-poly-target)
-    [(html) (txexpr 'section '((id "section")) elements)]
+    [(html) (txexpr 'section '((id "section"))
+                    `((div ((id "sectitle")) ,sectitle)
+                      ,@secbody))]
     [(txt) `("\n" ,@elements "---")]
     [(ltx pdf) (apply string-append `("\\cventry" ,@elements "}"))]))
-
-;; a section title
-(define (sectitle . elements)
-  (case (current-poly-target)
-    [(html) (txexpr 'div '((id "sectitle")) elements)]
-    [(txt) `(,@elements)]
-    [(ltx pdf) (apply string-append `("\n\\cvsection{ " ,@elements "}"))]))
 
 ;; an individual experience on the resume
 (define (experience . elements)

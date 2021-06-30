@@ -13,7 +13,7 @@
 
 ◊body{
   ◊section{
-    ◊sectitle{Work}
+    Work
     ◊experience{
       Uber
       Design Engineer
@@ -42,7 +42,7 @@
     }
   }
   ◊section{
-    ◊sectitle{Education}
+    Education
     ◊experience{
       UC Berkeley
       BA, Computer Science
@@ -60,7 +60,7 @@
     }
   }
   ◊section{
-    ◊sectitle{Skills}
+    Skills
     ◊experience{
       Design Tools
       ◊expbody{
