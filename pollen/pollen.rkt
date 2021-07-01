@@ -3,7 +3,7 @@
 ;; this is a rudimentary expression language for customizing resumes
 ;; embedded in pollen!
 
-(require racket/date racket/string racket/list txexpr pollen/setup net/url)
+(require racket/string racket/list txexpr pollen/setup net/url)
 (provide (all-defined-out))
 
 ;; setup submodule: provides define statements for values to override
@@ -80,10 +80,7 @@
                       ,@secbody))]
     [(txt) `("\n" ,@elements "---")]
     [(ltx pdf) (apply string-append
-                      `("\\cvsection{" ,sectitle "}\n"
-                                       "\\begin{cventries}"
-                                       ,@secbody
-                                       "\\end{cventries}"))]))
+                      `("\\cvsection{" ,sectitle "}\n\\begin{cventries}" ,@secbody "\\end{cventries}"))]))
 
 ;; an individual experience on the resume
 (define (experience . elements)
@@ -100,12 +97,11 @@
                ,body))]
     [(txt) `("--\n" ,@elements "\n")]
     [(ltx pdf) (apply string-append
-                      `("\\cventroo\n"
-                        "{\n"
+                      `("\\cventroo{"
                         ,@(mapca
                            (lambda (a) (string-append a "\\newline "))
-                           (rm-newlines head)) "}"
-                                               "{" ,body "}"))]))
+                           (rm-newlines head))
+                        "}{" ,body "}"))]))
 
 
 ;; "small experience" - no multiple headers
@@ -121,9 +117,7 @@
                ,body))]
     [(txt) `("--\n" ,@elements "\n")]
     [(ltx pdf) (apply string-append
-                      `("\\cventroo"
-                        "{" ,@head "}"
-                        "{" ,body "}\n"))]))
+                      `("\\cventroo{" ,@head "}{" ,body "}\n"))]))
 
 ;; the body of an experience
 ;; typically contains things accomplished during the experience
