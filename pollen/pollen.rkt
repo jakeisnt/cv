@@ -30,9 +30,9 @@
   (case (current-poly-target)
     [(html) (txexpr 'div '((id "head"))
                     `((div ((id "halign"))
-                          (div ((id "sleft")) ,@left)
-                          (div ((id "sright")) ,@right))
-                        ,summary))]
+                           (div ((id "sleft")) ,@left)
+                           (div ((id "sright")) ,@right))
+                      ,summary))]
     [(txt) elements]
     [(ltx pdf) (apply string-append elements)]))
 
@@ -81,9 +81,9 @@
     [(txt) `("\n" ,@elements "---")]
     [(ltx pdf) (apply string-append
                       `("\\cvsection{" ,sectitle "}\n"
-                         "\\begin{cventries}"
-                         ,@secbody
-                         "\\end{cventries}"))]))
+                                       "\\begin{cventries}"
+                                       ,@secbody
+                                       "\\end{cventries}"))]))
 
 ;; an individual experience on the resume
 (define (experience . elements)
@@ -95,14 +95,17 @@
   (case (current-poly-target)
     [(html)
      (txexpr 'div '((id "experience"))
-                    `((div ((id "exphead"))
-                          ,@(map (lambda (el) (list 'div el)) head))
-                      ,body))]
+             `((div ((id "exphead"))
+                    ,@(map (lambda (el) (list 'div el)) head))
+               ,body))]
     [(txt) `("--\n" ,@elements "\n")]
     [(ltx pdf) (apply string-append
                       `("\\cventroo\n"
-                        "{\n" ,@(mapca (lambda (a) (string-append a "\\")) head) "}"
-                        "{" ,body "}"))]))
+                        "{\n"
+                        ,@(mapca
+                           (lambda (a) (string-append a "\\newline "))
+                           (rm-newlines head)) "}"
+                                               "{" ,body "}"))]))
 
 
 ;; "small experience" - no multiple headers
@@ -113,9 +116,9 @@
   (case (current-poly-target)
     [(html)
      (txexpr 'div '((id "experience"))
-                    `((div ((id "exphead"))
-                          ,@(map (lambda (el) (list 'div el)) head))
-                      ,body))]
+             `((div ((id "exphead"))
+                    ,@(map (lambda (el) (list 'div el)) head))
+               ,body))]
     [(txt) `("--\n" ,@elements "\n")]
     [(ltx pdf) (apply string-append
                       `("\\cventroo"
@@ -131,9 +134,9 @@
     [(ltx pdf)
      (define nelem (expand-until-list elements))
      (apply string-append
-                      `("\n\\begin{cvitems}\n"
-                         ,@nelem
-                        "\\end{cvitems}"))]))
+            `("\n\\begin{cvitems}\n"
+              ,@nelem
+              "\\end{cvitems}"))]))
 
 ;; bullet point in the body of an experience
 (define (expbullet . elements)
