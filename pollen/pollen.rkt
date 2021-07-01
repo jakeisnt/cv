@@ -100,12 +100,9 @@
                       ,body))]
     [(txt) `("--\n" ,@elements "\n")]
     [(ltx pdf) (apply string-append
-                      `("\\cventry\n"
-                        "{" ,ttl "}\n"
-                        "{" ,org "}\n"
-                        "{ loc }\n"
-                        "{" ,dt "}\n"
-                        "{" ,body "\n}"))]))
+                      `("\\cventroo\n"
+                        "{\n" ,@head "}"
+                        "{" ,body "}"))]))
 
 
 ;; "small experience" - no multiple headers
@@ -121,12 +118,9 @@
                       ,body))]
     [(txt) `("--\n" ,@elements "\n")]
     [(ltx pdf) (apply string-append
-                      `("\\cventry"
-                        "{" ,ttl "}"
-                        "{" ,ttl "}"
-                        "{ loc }"
-                        "{" ,ttl "}"
-                        "{" ,body "\n}\n"))]))
+                      `("\\cventroo"
+                        "{" ,@head "}"
+                        "{" ,body "}\n"))]))
 
 ;; the body of an experience
 ;; typically contains things accomplished during the experience
@@ -173,7 +167,7 @@
   (case (current-poly-target)
     [(html) (txexpr 'div '((id "date")) elements)]
     [(txt) `("" ,@elements "")]
-    [(ltx pdf) (apply string-append `("{\\date " ,@elements "}\n"))]))
+    [(ltx pdf) (apply string-append `("\\date{ " ,@elements "}"))]))
 
 ;; --- helper functions
 ;; map but skip the last element of the list
