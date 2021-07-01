@@ -101,7 +101,7 @@
     [(txt) `("--\n" ,@elements "\n")]
     [(ltx pdf) (apply string-append
                       `("\\cventroo\n"
-                        "{\n" ,@head "}"
+                        "{\n" ,@(mapca (lambda (a) (string-append a "\\")) head) "}"
                         "{" ,body "}"))]))
 
 
@@ -137,7 +137,6 @@
 
 ;; bullet point in the body of an experience
 (define (expbullet . elements)
-  (print elements)
   (case (current-poly-target)
     [(html) (txexpr 'div '((id "expbullet")) elements)]
     [(txt) `("- " ,@elements "")]
@@ -166,8 +165,8 @@
 (define (date . elements)
   (case (current-poly-target)
     [(html) (txexpr 'div '((id "date")) elements)]
-    [(txt) `("" ,@elements "")]
-    [(ltx pdf) (apply string-append `("\\date{ " ,@elements "}"))]))
+    [(txt) `("" ,@elements "")] ;; should bbe  \\date{
+    [(ltx pdf) (apply string-append `("" ,@elements ""))]))
 
 ;; --- helper functions
 ;; map but skip the last element of the list
