@@ -1,3 +1,6 @@
+.direnv/*
+!.direnv/.git-keep
+
 .DS_Store
 .idea
 tmp/
@@ -25,5 +28,4 @@ tmp/
 *.out
 *.synctex.gz
 .auctex-auto/*
-.direnv/flake-profile*
-!.direnv/.git-keep
+
