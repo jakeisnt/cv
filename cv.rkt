@@ -1,6 +1,6 @@
 #lang at-exp racket/base
 
-;; from https://www.asumu.xyz/docs/cv.rkt
+;; mostly from https://www.asumu.xyz/docs/cv.rkt
 
 (require pict
          ppict
@@ -23,9 +23,9 @@
 
 (with-text-style
   #:defaults [#:face "Overpass, Light"
-              #:size 18]
+              #:size 16]
   ([t #:line-sep 3]
-   [h1 #:face "Bebas Neue, Bold" #:size 45]
+   [h1 #:face "Bebas Neue, Bold" #:size 28]
    [h2 #:face "Overpass, Bold"]
    [h3 #:face "Overpass"]
    [tt  #:face "Inconsolata"])
@@ -39,25 +39,21 @@
   (define page-1
     (ppict-do (blank width* height*)
       #:go (coord 1 0 'rt)
-      @tt{asumu@"@"asumu.xyz
-          http://asumu.xyz}
+      @tt{jake@"@"isnt.online
+          http://jake.isnt.online}
       #:go (coord 0.73 -0.005 'rt)
       #:go (coord 0 0 'lt)
-      @h1{Asumu Takikawa}
+      @h1{Jacob Chvatal}
       (blank 1 20)
       (linewidth 2 (hline (* (/ 7.5 8.5) width) 1))
       (blank 1 20)
       @t[#:line-sep 0]{
          @h2{Education}
          @hr
-         @h3{PhD in Computer Science (Programming Languages)}
-         Northeastern University, 2016
-         Advisor: Matthias Felleisen
-         @(blank 1 10)
-         @h3{BSc in Combined Computer Science & Math}
-         University of British Columbia, 2010
+         @h3{BSc in Computer Science}
+         Northeastern University, expected 2022
       }
-      (blank 1 20)
+      @blank[1 20]
       @h2{Employment}
       @hr
       @(ppict-do (blank width* (pict-height @h3{R}))
@@ -93,11 +89,6 @@
          ▸  Core developer for the Racket language & maintains a Racket PPA for Ubuntu.
          @(blank 1 4)
          Github:  http://github.com/takikawa}
-      ))
-
-  (define page-2
-    (ppict-do (blank width* height*)
-      #:go (coord 0 0 'lt)
       (blank 1 20)
       @h2{Community Service and Leadership}
       @hr
@@ -109,79 +100,10 @@
       @h2{Languages, Technologies, and Tools}
       @hr
       @t{▸  Racket, Scheme, Java, C, Haskell
-         ▸  Git, Subversion, Vim, Emacs, Linux, Docker, Packer}
-      (blank 1 20)
-      @h2{Awards and Recognition}
-      @hr
-      @t{▸  Best Student Paper Award — “Gradual Typing for First-Class Classes” (2012)
-         ▸  Distinguished Paper Award — “Towards Practical Gradual Typing” (2015)}
-      (blank 1 20)
-      @h2{Talks and Publications}
-      @hr
-      @t[#:line-sep 0]{
-         @(ppict-do (blank width* (pict-height @h3{G}))
-            #:go (coord 0 0 'lt)
-            @h3{“Gradual Typing for First-Class Classes”}
-            #:go (coord 1 0 'rt)
-            @h3{OOPSLA 2012})
-         @(blank 1 3)
-         With S. Strickland, C. Dimoulas, S. Tobin-Hochstadt, and M. Felleisen.
-         @(blank 1 3)
-         @(ppict-do (blank width* (pict-height @h3{G}))
-            #:go (coord 0 0 'lt)
-            @h3{“Generics”}
-            #:go (coord 1 0 'rt)
-            @h3{RacketCon 2012})
-         @(blank 1 3)
-         Talk at developer/user conference.
-         @(blank 1 3)
-         @(ppict-do (blank width* (pict-height @h3{G}))
-            #:go (coord 0 0 'lt)
-            @h3{“Constraining Delimited Control with Contracts”}
-            #:go (coord 1 0 'rt)
-            @h3{ESOP 2013})
-         @(blank 1 3)
-         With S. Strickland and S. Tobin-Hochstadt.
-         @(blank 1 3)
-         @(ppict-do (blank width* (pict-height @h3{G}))
-            #:go (coord 0 0 'lt)
-            @h3{“Contracts for First-Class Classes: Theory and Practice”}
-            #:go (coord 1 0 'rt)
-            @h3{TOPLAS 2013})
-         @(blank 1 3)
-         With S. Strickland, C. Dimoulas, and M. Felleisen.
-         @(blank 1 3)
-         @(ppict-do (blank width* (pict-height @h3{G}))
-            #:go (coord 0 0 'lt)
-            @h3{“Contracts for Practical Gradual Typing in an OO World”}
-            #:go (coord 1 0 'rt)
-            @h3{Shonan 2014})
-         @(blank 1 3)
-         Invited talk at the Shonan Workshop on Contracts.
-         @(blank 1 3)
-         @(ppict-do (blank width* (pict-height @h3{G}))
-            #:go (coord 0 0 'lt)
-            @h3{“Towards Practical Gradual Typing”}
-            #:go (coord 1 0 'rt)
-            @h3{ECOOP 2015})
-         @(blank 1 3)
-         With D. Feltey, E. Dean, M. Flatt, R. Findler, S. Tobin-Hochstadt, and M. Felleisen.
-         @(blank 1 3)
-         @(ppict-do (blank width* (pict-height @h3{G}))
-            #:go (coord 0 0 'lt)
-            @h3{“Is Sound Gradual Typing Dead?”}
-            #:go (coord 1 0 'rt)
-            @h3{POPL 2016})
-         @(blank 1 3)
-         With D. Feltey, B. Greenman, M. New, J. Vitek, and M. Felleisen.
-       }
-      ))
+         ▸  Git, Subversion, Vim, Emacs, Linux, Docker, Packer}))
 
   (send dc start-doc "start")
   (send dc start-page)
   (draw-pict page-1 dc (* (/ 0.5 8.5) width) (* (/ 0.75 11) height))
-  (send dc end-page)
-  (send dc start-page)
-  (draw-pict page-2 dc (* (/ 0.5 8.5) width) (* (/ 0.75 11) height))
   (send dc end-page)
   (send dc end-doc))
