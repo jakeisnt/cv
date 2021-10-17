@@ -12,9 +12,9 @@
         inherit (lib) attrValues;
         pkgs = nixpkgs.legacyPackages.${system};
         lib = nixpkgs.lib;
-      in { 
+      in {
         devShell = pkgs.mkShell {
-          buildInputs = with pkgs; [ texlive.combined.scheme-full ];
+          buildInputs = with pkgs; [ texlive.combined.scheme-full racket ];
         };
     });
 }

@@ -2,4 +2,4 @@
 
 xelatex ./cv.tex
 # Resumes are better when they have names!
-mv ./cv.pdf JacobChvatalResume.pdf
+mv ./cv.pdf jacob-chvatal-resume.pdf

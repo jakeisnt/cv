@@ -28,4 +28,4 @@ tmp/
 *.out
 *.synctex.gz
 .auctex-auto/*
-
+cv.pdf
