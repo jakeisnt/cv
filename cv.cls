@@ -52,16 +52,10 @@ Last Updated on \today % Last Updated text
 %----------------------------------------------------------------------------------------
 
 \newcommand{\namesection}[2]{ % Defines the command for the main heading
-
-    \titleformat{\section}{ % Customize the large section titles
+    \titleformat{\section}{ % Customize the font for this specific section
     \color{headings}\scshape\fontspec[Path = fonts/lato/]{Lato-Lig}\fontsize{26pt}{32pt}\selectfont \raggedright}{}{0em}{}
     \section{#1 #2}
-    % \fontsize{26pt}{32pt}\raggedleft % Font size
-    % \fontspec[Path = fonts/lato/]{Lato-Hai}\selectfont #1 % First name font
-    % \fontspec[Path = fonts/lato/]{Lato-Lig}\selectfont #2 % Last name font
-    % \fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{14pt}\selectfont  % Contact information font
-
-    \titleformat{\section}{ % Customize the large section titles
+    \titleformat{\section}{ % Reset the section configuration for the other headings
     \color{headings}\scshape\fontspec[Path = fonts/lato/]{Lato-Lig}\fontsize{16pt}{24pt}\selectfont \raggedright\uppercase}{}{0em}{}
 }
 
