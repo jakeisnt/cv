@@ -51,12 +51,18 @@ Last Updated on \today % Last Updated text
 %	MAIN HEADING COMMAND
 %----------------------------------------------------------------------------------------
 
-\newcommand{\namesection}[3]{ % Defines the command for the main heading
-    \fontsize{26pt}{32pt} % Font size
-    \fontspec[Path = fonts/lato/]{Lato-Hai}\selectfont #1 % First name font
-    \fontspec[Path = fonts/lato/]{Lato-Lig}\selectfont #2 % Last name font
-    \color{headings} % Use the headings color
-    \fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{14pt}\selectfont #3  % Contact information font
+\newcommand{\namesection}[2]{ % Defines the command for the main heading
+
+    \titleformat{\section}{ % Customize the large section titles
+    \color{headings}\scshape\fontspec[Path = fonts/lato/]{Lato-Lig}\fontsize{26pt}{32pt}\selectfont \raggedright}{}{0em}{}
+    \section{#1 #2}
+    % \fontsize{26pt}{32pt}\raggedleft % Font size
+    % \fontspec[Path = fonts/lato/]{Lato-Hai}\selectfont #1 % First name font
+    % \fontspec[Path = fonts/lato/]{Lato-Lig}\selectfont #2 % Last name font
+    % \fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{14pt}\selectfont  % Contact information font
+
+    \titleformat{\section}{ % Customize the large section titles
+    \color{headings}\scshape\fontspec[Path = fonts/lato/]{Lato-Lig}\fontsize{16pt}{24pt}\selectfont \raggedright\uppercase}{}{0em}{}
 }
 
 %----------------------------------------------------------------------------------------
