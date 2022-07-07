@@ -52,16 +52,11 @@ Last Updated on \today % Last Updated text
 %----------------------------------------------------------------------------------------
 
 \newcommand{\namesection}[3]{ % Defines the command for the main heading
-\centering{ % Center the name
-\fontsize{40pt}{60pt} % Font size
-\fontspec[Path = fonts/lato/]{Lato-Hai}\selectfont #1 % First name font
-\fontspec[Path = fonts/lato/]{Lato-Lig}\selectfont #2 % Last name font
-} \\[5pt] % Whitespace between the name and contact information
-\centering{ % Center the contact information
-\color{headings} % Use the headings color
-\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{14pt}\selectfont #3} % Contact information font
-\noindent\makebox[\linewidth]{\color{headings}\rule{\paperwidth}{0.4pt}} % Horizontal rule
-\vspace{-5pt} % Reduce whitespace after the rule slightly
+    \fontsize{26pt}{32pt} % Font size
+    \fontspec[Path = fonts/lato/]{Lato-Hai}\selectfont #1 % First name font
+    \fontspec[Path = fonts/lato/]{Lato-Lig}\selectfont #2 % Last name font
+    \color{headings} % Use the headings color
+    \fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{14pt}\selectfont #3  % Contact information font
 }
 
 %----------------------------------------------------------------------------------------
