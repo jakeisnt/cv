@@ -29,8 +29,8 @@
                :height (in-to-px 11)})
 
 (defn draw! []
-  (q/background 255)
-  (q/fill 0 255 255)
+  ;; (q/background )
+  (q/fill 0 0 0)
   (let [angle 3.14
         x (* 150 (q/cos angle))
         y (* 150 (q/sin angle))]
@@ -38,7 +38,7 @@
                          (/ (q/height) 2)]
       (q/ellipse x y 100 100)))
   (q/text-mode :shape)
-  (q/text-font (q/create-font "Open Sans" 32))
+  (q/text-font (q/create-font "fonts/UniversLTPro-55Roman.otf" 32))
   (q/text-align :left :top)
   (q/text "hello! this is some test text.!" 10 10) ;; Address card
   (q/text-mode :model))
