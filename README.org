@@ -13,3 +13,7 @@ It's currently heavily inspired by [[https://github.com/deedy/Deedy-Resume][this
 - [[https://docs.racket-lang.org/ppict/index.html][ppict]] (racket)
 - Eventually: Would love to construct my own interactive system from the ground up. But I should first familiarize myself with current rendering systems!
 
+*** Ergonomic Concrete Syntax
+- [[https://github.com/mbutterick/pollen][pollen]]: ergonomic racket syntax for prose
+- [[https://github.com/JeremS/prose][prose]]: pollen for clojure
+- [[https://markdoc.io/][markdoc]]: stripe's markdown-based standard and writing system
