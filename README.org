@@ -7,3 +7,9 @@ It's currently heavily inspired by [[https://github.com/deedy/Deedy-Resume][this
 - [[https://github.com/poldrack/autoCV][AutoCV]]
 - [[https://jsonresume.org/][JSON Resume]]
 - [[https://www.xml.com/pub/a/2003/05/28/qa.html][XML powered job hunting]] and the [[http://xmlresume.sourceforge.net/][XML resume library]]
+
+** Other Technologies worth considering
+- [[https://github.com/mbattyani/cl-pdf][cl-pdf]] (common lisp)
+- [[https://docs.racket-lang.org/ppict/index.html][ppict]] (racket)
+- Eventually: Would love to construct my own interactive system from the ground up. But I should first familiarize myself with current rendering systems!
+
