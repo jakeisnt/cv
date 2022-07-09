@@ -29,10 +29,18 @@
                :height (in-to-px 11)})
 
 (defn draw! []
+  (q/background 255)
+  (q/fill 0 255 255)
+  (let [angle 3.14
+        x (* 150 (q/cos angle))
+        y (* 150 (q/sin angle))]
+    (q/with-translation [(/ (q/width) 2)
+                         (/ (q/height) 2)]
+      (q/ellipse x y 100 100)))
   (q/text-mode :shape)
-  (q/text-font (q/create-font "3270 Narrow Nerd Font Complete" 20))
+  (q/text-font (q/create-font "Open Sans" 32))
   (q/text-align :left :top)
-  (q/text "hello! this is some test text.!" 50 400) ;; Address card
+  (q/text "hello! this is some test text.!" 10 10) ;; Address card
   (q/text-mode :model))
 ;; reset back to :model if you wanted.  )
 
