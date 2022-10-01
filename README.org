@@ -7,3 +7,5 @@ It's currently heavily inspired by [[https://github.com/deedy/Deedy-Resume][this
 - [[https://github.com/poldrack/autoCV][AutoCV]]
 - [[https://jsonresume.org/][JSON Resume]]
 - [[https://www.xml.com/pub/a/2003/05/28/qa.html][XML powered job hunting]] and the [[http://xmlresume.sourceforge.net/][XML resume library]]
+** Future References
+https://github.com/mbattyani/cl-pdf/blob/master/examples/examples.lisp
