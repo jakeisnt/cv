@@ -14,7 +14,11 @@
         lib = nixpkgs.lib;
       in {
         devShell = pkgs.mkShell {
-          buildInputs = with pkgs; [ texlive.combined.scheme-full zathura ];
+          buildInputs = with pkgs; [ 
+            texlive.combined.scheme-full 
+            zathura 
+            sbcl
+          ];
         };
     });
 }
